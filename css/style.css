@@ -352,6 +352,26 @@ nav a.active {
 }
 
 
+/* ===== ARTICLE – mobile polish ===== */
+@media (max-width: 600px) {
+  .article {
+    padding-left: 16px;   /* breathe from left edge */
+    padding-right: 16px;  /* breathe from right edge */
+    font-size: 1.05rem;   /* just a tad bigger */
+    line-height: 1.7;     /* airier lines */
+    color: hsl(210 12% 12%); /* darker grey → sharper */
+  }
+
+  .article-content p {
+    margin-bottom: 1.2em; /* clearer paragraph break */
+  }
+
+  #articleTitle {
+    font-size: 1.4rem;    /* slightly larger title */
+    letter-spacing: 0.2px;
+  }
+}
+
 
 /* ===== Brand photo box ===== */
 .brand {
