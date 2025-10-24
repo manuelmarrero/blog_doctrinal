@@ -1,0 +1,855 @@
+/* =========================
+   🎨 Variables globales
+   ========================= */
+:root {
+  --primary: hsl(100 100% 12%);
+  --secondary: hsl(0 0% 100%);
+  --accent: hsl(207 89% 61%);
+  --text: hsl(210 10% 15%);
+  --muted: hsl(210 6% 40%);
+  --bg: hsl(0 0% 98%);
+  --card: hsl(0 0% 100%);
+  --border: hsl(210 16% 90%);
+}
+
+/* =========================
+   🔤 Tipografía y base
+   ========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6; /* más legible */
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  color: hsl(210 15% 10%); /* más vivas */
+  margin-bottom: 0.5em;
+}
+
+p {
+  color: hsl(210 8% 20%);
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* =========================
+   🧭 Header y navegación
+   ========================= */
+.site-header {
+  background: var(--secondary);
+  border-bottom: 1px solid var(--border);
+  font-weight: bold;
+}
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+.brand h1 { font-size: 1.25rem; margin: 0; }
+.subtitle { color: var(--muted); font-size: 0.95rem; }
+
+nav a {
+  margin-left: 16px;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+nav a.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* =========================
+   🖼 Hero
+   ========================= */
+.hero {
+  background-size: cover;
+  background-position: center;
+}
+.hero-content {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 16px;
+  color: white;
+  text-align: center;
+   padding: 10px 20px;
+  border-radius: 8px;
+
+
+}
+.hero h2 { font-size: 3rem; margin-bottom: 8px; }
+.hero-content p {
+  max-width: 700px;   /* controla el ancho máximo del texto */
+  margin: 0 auto;     /* centra horizontalmente */
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  margin: 20px 0;
+}
+
+.hero-image img {
+  max-width: 100%;           /* no se sale del ancho */
+  max-height: 400px;         /* controla la altura máxima */
+  width: auto;               /* mantiene proporción */
+  height: auto;              /* evita distorsión */
+  border-radius: 12px;       /* opcional: esquinas redondeadas */
+  object-fit: cover;         /* recorta si es necesario */
+}
+
+/* =========================
+   📦 Tarjetas y grillas
+   ========================= */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 24px 0;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+.card-icon { font-size: 2rem; }
+.card h3 { margin: 10px 0; }
+.card p { color: var(--muted); }
+
+/* =========================
+   🔘 Botones
+   ========================= */
+.button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+.button:hover { filter: brightness(0.95); }
+
+/* =========================
+   📑 Formularios
+   ========================= */
+.form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+.form-row { margin-bottom: 12px; }
+.form-row input,
+.form-row textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+}
+
+/* =========================
+   📋 Listas
+   ========================= */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* =========================
+   📖 Artículos
+   ========================= */
+.back-link { display: inline-block; margin: 18px 0; }
+.article { padding: 24px 0; }
+.article-content p { line-height: 1.7; margin: 14px 0; }
+
+/* =========================
+   👤 Sobre mí
+   ========================= */
+.about { padding: 24px 0; }
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+  margin-top: 20px;
+}
+.about-header {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+.avatar {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.checklist { list-style: none; padding-left: 0; }
+.checklist li::before {
+  content: "✓";
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+/* =========================
+   ⚙️ Admin Panel
+   ========================= */
+.admin-nav a { margin-left: 12px; }
+.admin { padding: 20px 0; }
+.tab { display: none; }
+.tab.visible { display: block; }
+.form-inline { display: flex; gap: 10px; margin-bottom: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 6px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  cursor: pointer;
+}
+.chip.selected {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* =========================
+   📌 Footer - Estilos Mejorados
+   ========================= */
+
+.site-footer {
+    /* Quitamos el margin-top para que el footer se sienta más conectado al contenido
+       y ajustamos el padding para un mejor espacio interno */
+    padding: 30px 0; 
+    border-top: 3px solid var(--accent); /* Borde superior más grueso y con color de acento */
+    background: var(--secondary);
+    color: var(--text); /* Aseguramos que el texto use el color principal */
+    font-size: 0.95rem; /* Hacemos el texto un poco más pequeño para un footer típico */
+    line-height: 1.5;
+}
+
+.footer-content {
+    /* Usamos 'gap' para un espacio controlado entre los elementos */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Para móviles, apilamos los elementos verticalmente */
+    flex-direction: column; 
+    gap: 15px; /* Espacio entre los elementos cuando están apilados */
+    text-align: center; /* Centramos el texto cuando se apila */
+    
+    /* Media Query para volver a la disposición horizontal en pantallas más grandes */
+    @media (min-width: 768px) {
+        flex-direction: row; /* Volvemos a la disposición original */
+        text-align: left;
+    }
+}
+
+/* Estilo para el texto de Copyright */
+#footerText {
+    margin: 0; /* Eliminamos el margen por defecto */
+    font-weight: 500; /* Un poco más de peso a la fuente */
+    opacity: 0.85; /* Le damos un ligero toque de transparencia */
+}
+
+
+/* Estilos para los enlaces sociales */
+.footer-content .social {
+    display: flex; /* Usamos flexbox para alinear los enlaces */
+    gap: 15px; /* Espacio uniforme entre los enlaces en lugar de margin-left */
+}
+
+.footer-content .social a {
+    /* Quitamos el margin-left de tu CSS original ya que usamos 'gap' */
+    color: var(--text);
+    text-decoration: none; /* Quitamos el subrayado */
+    font-weight: 600; /* Le damos más fuerza al texto de los enlaces */
+    transition: color 0.3s ease-in-out, transform 0.2s ease; /* Transiciones más suaves y con efecto */
+}
+
+.footer-content .social a:hover {
+    color: var(--accent);
+    /* Efecto sutil al pasar el ratón */
+    transform: translateY(-2px); 
+    /* Agregamos un borde inferior al pasar el ratón para destacar */
+    border-bottom: 2px solid var(--accent); 
+}
+
+/* =========================
+   📱 Responsive
+   ========================= */
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .footer-content { flex-direction: column; gap: 10px; }
+  .about-header { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .cards-grid { grid-template-columns: 1fr; }
+}
+
+
+
+/* ===== Brand photo box ===== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  flex-shrink: 0;
+}
+.brand-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.brand-info h1 { margin: 0; }
+.brand-info .subtitle { margin-top: 4px; }
+
+/* ===== Menu toggle (hamburguesa) ===== */
+.menu-toggle {
+  display: none; /* visible solo en móviles */
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.menu-icon {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+}
+.menu-icon::before,
+.menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+.menu-icon::before { top: -6px; }
+.menu-icon::after  { top: 6px; }
+
+/* Estado activo: cruza el ícono */
+.menu-toggle[aria-expanded="true"] .menu-icon {
+  background: transparent;
+}
+.menu-toggle[aria-expanded="true"] .menu-icon::before {
+  top: 0; transform: rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .menu-icon::after {
+  top: 0; transform: rotate(-45deg);
+}
+
+/* ===== Nav responsive ===== */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.site-nav a {
+  margin-left: 0; /* evitamos saltos raros al colapsar */
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+/* Modo móvil */
+@media (max-width: 900px) {
+  .site-header .nav {
+    gap: 12px;
+  }
+  .menu-toggle {
+    display: inline-block;
+  }
+  /* La nav se colapsa y se oculta por defecto */
+  .site-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(64px + 1px); /* debajo del header: ajusta si tu header varía */
+    background: var(--secondary);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 6px 12px rgb(0 0 0 / 0.06);
+    padding: 8px 16px;
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+  }
+  /* Cuando está activo, se muestra */
+  .site-nav.open {
+    display: flex;
+  }
+  .site-nav a {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* Mejora: el header se mantiene estable */
+.site-header {
+  position: relative;
+  z-index: 100;
+}
+
+
+.tab {
+  display: none;
+}
+.tab.visible {
+  display: block;
+}
+
+
+
+.modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--secondary);
+  color: var(--text);
+  padding: 30px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.review-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.review-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#payModal.modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#payModal .modal-content {
+  background: var(--secondary);
+  color: var(--text);
+  padding: 30px;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+#paypal-button-container {
+  margin: 20px 0;
+}
+
+#mobileBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#mobileBtn:hover {
+  background: hsl(207, 89%, 50%);
+}
+
+
+/* 📚 Cuadrícula de catálogo */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  justify-items: center;
+}
+
+/* 📦 Tarjeta tipo carta */
+.card {
+  width: 100%;
+  max-width: 350px;
+  background: var(--secondary);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🖼️ Imagen contenida */
+.card .img-box {
+  width: 100%;
+  height: 250px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card .img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen al recuadro sin deformarla */
+}
+
+/* 📄 Contenido textual */
+.card .content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 💳 Pie de tarjeta */
+.card .footer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* 🧵 Botones */
+.card .btn-review,
+.card .btn-buy {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card .btn-review:hover,
+.card .btn-buy:hover {
+  background: hsl(207, 89%, 50%);
+}
+
+.modal.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--secondary);
+  color: var(--text);
+  padding: 30px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+#paypal-button-container {
+  margin: 20px 0;
+}
+
+#mobileBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#mobileBtn:hover {
+  background: hsl(207, 89%, 50%);
+}
+
+
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* 🔧 FIX: asegurar que la portada se ajuste al recuadro gris */
+.book-image {
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.book-image img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.book-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.book-info h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.book-info p {
+  margin: 0 0 15px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.book-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* ✅ empuja el footer hacia abajo */
+}
+
+.price {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.buy-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: hsl(207, 89%, 50%);
+}
+
+
+/* Modal de pago */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  align-items: center;
+  justify-content: center;
+}
+.modal.active { display: flex; }
+
+.modal-content {
+  background: var(--secondary);
+  color: var(--text);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#mobileBtn {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* ⭐ Botón "Leer reseña" mismo fondo que "Comprar" */
+.book-text .btn-review {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 12px;
+  font-weight: bold;   /* ← negrita */
+  transition: filter 0.2s ease;
+}
+
+.book-text .btn-review:hover {
+  filter: brightness(1);    /* mismo efecto al pasar el ratón */
+  background: hsl(207, 89%, 50%);
+}
+
+
+/* ===== MODAL RESEÑA ===== */
+#reviewModal .modal-content.review-box {
+  max-width: 680px;
+  width: 90%;
+  background: var(--secondary);
+  color: var(--text);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,.3);
+  text-align: left;
+  position: relative;
+}
+
+#reviewModal pre {
+  white-space: pre-wrap;      /* respeta saltos y tabulaciones */
+  font-family: inherit;
+  line-height: 1.8;           /* espaciado entre líneas */
+  margin: 0;
+  padding-left: 1.2em;        /* sangría general */
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+}
+

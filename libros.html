@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Libros | Maestro Manuel Marrero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="page">
+
+  <!-- 🧭 Encabezado -->
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-photo">
+          <img src="./images/verdadesdelreino.jpg" alt="Foto de Manuel Marrero" />
+        </div>
+        <div class="brand-info">
+          <h1>Maestro Manuel Marrero</h1>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="menu-icon"></span>
+      </button>
+
+      <nav class="site-nav">
+        <a href="./index.html">Inicio</a>
+        <a href="./enseñanzas.html">Enseñanzas</a>
+        <a href="./libros.html">Libros</a>
+        <a href="./sobre_mi.html">Sobre mí</a>
+        <a href="./contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 📚 Catálogo de libros -->
+  <main class="container">
+    <section class="book-grid">
+      <!-- 📘 Libro 1 -->
+      <article class="book-card">
+        <div class="book-image">
+          <img src="./img/books/1.jpg" alt="DIOS Y EL PROFETA" />
+        </div>
+        <div class="book-info">
+          <div class="book-text">
+            <h3>DIOS Y EL PROFETA una conexión entre cielo y tierra</h3>
+            <p>Dios y el Profeta una conexión entre cielo y tierra, un pacto eterno, un amor eterno. (Y Moisés le respondió: ¿Tienes tú celos por mí? Ojalá todo el pueblo de Jehová fuese profeta, y que Jehová pusiera su espíritu sobre ellos. NVI. NUMEROS 11:29).</p>
+            <button class="btn-review">Leer reseña</button>
+           <div class="book-footer">
+           <span class="price">$10.00</span>
+           <button class="buy-button">Comprar</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 📕 Libro 2 -->
+      <article class="book-card">
+        <div class="book-image">
+          <img src="./img/books/2.jpg" alt="ESTRATEGIAS SATÁNICAS" />
+        </div>
+        <div class="book-info">
+          <div class="book-text">
+            <h3>ESTRATEGIAS SATÁNICAS conociendo a tu enemigo</h3>
+            <p>Estrategias Satánicas: Un libro que todo cristiano debería leer y si no lo eres también. (Para que Satanás no tome ventaja sobre nosotros, pues no ignoramos sus planes. 2 a CORINTIOS 2:11).
+            </p>
+            <button class="btn-review">Leer reseña</button>
+            <div class="book-footer">
+           <span class="price">$10.00</span>
+           <button class="buy-button">Comprar</button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- 🧾 Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p id="footerText">© 2025 Maestro Manuel Marrero</p>
+      <div class="social">
+        <a id="socialFacebook" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+        <a id="socialInstagram" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a id="socialTikTok" href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+        <a id="socialTwitter" href="https://twitter.com/" target="_blank" rel="noopener">X/Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+</div> <!-- cierre de .page -->
+
+<script type="module" src="./js/app.js"></script>
+<script>
+  (function () {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (e) => {
+      const withinHeader = e.target.closest('.site-header');
+      if (!withinHeader && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    nav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+<!-- Modal de pago -->
+<div id="payModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modalBookTitle"></h3>
+    <p>Selecciona tu método de pago:</p>
+    <div id="paypal-button-container"></div>
+    <button id="mobileBtn">Pago Móvil (WhatsApp)</button>
+  </div>
+</div>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AQ2eec0RATUJq3JTQr4LA48ClxTviGU7_hiRHidkH1lP10kLeiVarCEeCgnELkmeEh9nOn2vMrCS4FkZ&currency=USD"></script>
+
+<!-- ✅ Asegúrate de cargar libros.js -->
+<script src="./js/libros.js"></script>
+
+</body>
+</html>

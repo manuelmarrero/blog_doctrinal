@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Maestro Manuel Marrero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="page"> <!-- NUEVO contenedor para layout completo -->
+
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-photo">
+            <img src="./images/verdadesdelreino.jpg" alt="Foto de Manuel Marrero" />
+          </div>
+          <div class="brand-info">
+            <h1>Maestro Manuel Marrero</h1>
+          </div>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="menu-icon"></span>
+        </button>
+
+        <nav class="site-nav">
+          <a href="./index.html">Inicio</a>
+          <a href="./enseñanzas.html">Enseñanzas</a>
+          <a href="./libros.html">Libros</a>
+          <a href="./sobre_mi.html">Sobre mí</a>
+          <a href="./contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content center-text">
+        <h2>Verdades del Reino</h2>
+        <p>Bienvenidos al espacio dedicado a la sana doctrina, reflexiones bíblicas y enseñanzas personales. Bienvenidos a las verdades del Reino de Dios.</p>
+      </div>
+    </section>
+
+    <div class="hero-image">
+      <img src="./images/verdadesdelreino.jpg" alt="Imagen de portada" />
+    </div>
+
+    <main class="container cards-grid">
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📖</div>
+        <h3>Estudios Bíblicos</h3>
+        <p>Artículos profundos sobre la Palabra de Dios.</p>
+        <a class="button" href="./enseñanzas.html">Explorar Enseñanzas →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">📚</div>
+        <h3>Mis Libros</h3>
+        <p>Adquiere mis publicaciones para un estudio doctrinal más exhaustivo.</p>
+        <a class="button" href="./libros.html">Ver Catálogo →</a>
+      </article>
+
+      <article class="card">
+        <div class="card-icon" aria-hidden="true">🎯</div>
+        <h3>Mi Misión</h3>
+        <p>Conoce mi historia, mi llamado, y mi propósito.</p>
+        <a class="button" href="./sobre_mi.html">Más sobre mí →</a>
+      </article>
+    </main>
+
+ <footer class="site-footer">
+      <div class="container footer-content">
+        <p id="footerText">© 2025 Maestro Manuel Marrero</p>
+        <div class="social">
+          <a id="socialFacebook" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <a id="socialInstagram" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a id="socialTikTok" href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+          <a id="socialTwitter" href="https://twitter.com/" target="_blank" rel="noopener">X/Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- cierre de .page -->
+
+  <script type="module" src="./js/app.js"></script>
+  <script>
+    (function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        const withinHeader = e.target.closest('.site-header');
+        if (!withinHeader && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

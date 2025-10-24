@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel de Control | Maestro Manuel Marrero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./css/style.css" rel="stylesheet" />
+  <script type="module" src="./js/admin.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <h1>Panel de Control</h1>
+      </div>
+
+      <!-- Botón hamburguesa -->
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="menu-icon"></span>
+      </button>
+
+      <!-- Navegación -->
+      <nav class="site-nav admin-nav">
+        <a href="#tab-etiquetas" class="active">Etiquetas</a>
+        <a href="#tab-blog">Blog</a>
+        <a href="#tab-entradas">Entradas</a>
+        <a href="#tab-mensajes">Mensajes</a>
+        <a href="#tab-config">Configuración</a>
+        <a href="#" id="logoutBtn">Cerrar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container admin">
+    <!-- Etiquetas -->
+    <section id="tab-etiquetas" class="tab visible">
+      <h2>Gestionar Etiquetas</h2>
+      <div class="form-inline">
+        <input id="newTag" type="text" placeholder="Nueva etiqueta" />
+        <button id="addTagBtn" class="button">Agregar</button>
+      </div>
+      <ul id="tagsList" class="list"></ul>
+    </section>
+
+    <!-- Blog -->
+    <section id="tab-blog" class="tab">
+      <h2>Crear Nueva Entrada</h2>
+      <form id="newPostForm" class="form">
+        <div class="form-row">
+          <label for="postTitle">Título</label>
+          <input id="postTitle" type="text" required />
+        </div>
+        <div class="form-row">
+          <label>Etiquetas</label>
+          <div id="tagsSelect" class="chips"></div>
+        </div>
+        <div class="form-row">
+          <label for="postSummary">Resumen</label>
+          <textarea id="postSummary" rows="3"></textarea>
+        </div>
+        <div class="form-row">
+          <label for="postContent">Contenido</label>
+          <textarea id="postContent" rows="10" required></textarea>
+        </div>
+        <button type="submit" class="button">Publicar</button>
+        <p id="postStatus" class="muted"></p>
+      </form>
+    </section>
+
+    <!-- Entradas -->
+    <section id="tab-entradas" class="tab">
+      <h2>Entradas Publicadas</h2>
+      <ul id="postsList" class="list"></ul>
+    </section>
+
+  
+    <!-- Mensajes -->
+    <section id="tab-mensajes" class="tab">
+      <h2>Mensajes Recibidos</h2>
+      <ul id="messagesList" class="list"></ul>
+    </section>
+
+    <!-- Configuración -->
+    <section id="tab-config" class="tab">
+      <h2>Configuración del Sitio</h2>
+      <form id="configForm" class="form">
+        <div class="form-row">
+          <label for="siteName">Nombre del sitio</label>
+          <input id="siteName" type="text" placeholder="Maestro Manuel Marrero" />
+        </div>
+        <div class="form-row">
+          <label for="footerTextInput">Texto del Footer</label>
+          <input id="footerTextInput" type="text" placeholder="© 2025 Maestro Manuel Marrero." />
+        </div>
+        <div class="form-row grid-3">
+          <div>
+            <label for="primaryColor">Color Primario</label>
+            <input id="primaryColor" type="text" placeholder="100 100% 12%" />
+          </div>
+          <div>
+            <label for="secondaryColor">Color Secundario</label>
+            <input id="secondaryColor" type="text" placeholder="0 0% 100%" />
+          </div>
+          <div>
+            <label for="accentColor">Color de Acento</label>
+            <input id="accentColor" type="text" placeholder="207 89% 61%" />
+          </div>
+        </div>
+        <h3>Redes Sociales</h3>
+        <div class="form-row">
+          <label for="facebookUrl">Facebook</label>
+          <input id="facebookUrl" type="url" placeholder="https://facebook.com/..." />
+        </div>
+        <div class="form-row">
+          <label for="instagramUrl">Instagram</label>
+          <input id="instagramUrl" type="url" placeholder="https://instagram.com/..." />
+        </div>
+        <div class="form-row">
+          <label for="tiktokUrl">TikTok</label>
+          <input id="tiktokUrl" type="url" placeholder="https://tiktok.com/..." />
+        </div>
+        <div class="form-row">
+          <label for="twitterUrl">Twitter/X</label>
+          <input id="twitterUrl" type="url" placeholder="https://twitter.com/..." />
+        </div>
+        <button type="submit" class="button">Guardar Configuración</button>
+        <p id="configStatus" class="muted"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Firebase + Logout -->
+  <script type="module">
+    import { auth, onAuthStateChanged, signOut } from "./js/firebase-config.js";
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth);
+      });
+    }
+  </script>
+
+  <!-- Menú hamburguesa -->
+  <script>
+    (function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        const withinHeader = e.target.closest('.site-header');
+        if (!withinHeader && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".admin-nav a[href^='#tab-']");
+    const tabs = document.querySelectorAll(".tab");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Activar enlace
+        navLinks.forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+
+        // Mostrar pestaña correspondiente
+        const targetId = link.getAttribute("href");
+        tabs.forEach(tab => {
+          tab.classList.toggle("visible", `#${tab.id}` === targetId);
+        });
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
