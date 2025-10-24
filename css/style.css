@@ -343,27 +343,25 @@ nav a.active {
    📱 Responsive
    ========================= */
 @media (max-width: 900px) {
-  .cards-grid { grid-template-columns: 1fr 1fr; }
-  .footer-content { flex-direction: column; gap: 10px; }
+  .cards-grid { grid-template-columns: 1fr 1fr; justify-items: center;}
+  .footer-content { flex-direction: column; gap: 10px; } 
   .about-header { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .cards-grid { grid-template-columns: 1fr; justify-items: center;}
-}
+  .footer-content { flex-direction: column; gap: 15px; }
+  .about-header { grid-template-columns: 1fr; }
 
-
-/* ===== ARTICLE – mobile polish ===== */
-@media (max-width: 600px) {
   .article {
-    padding-left: 16px;   /* breathe from left edge */
-    padding-right: 16px;  /* breathe from right edge */
+    padding-left: 20px;   /* breathe from left edge */
+    padding-right: 20px;  /* breathe from right edge */
     font-size: 1.05rem;   /* just a tad bigger */
     line-height: 1.7;     /* airier lines */
     color: hsl(210 12% 12%); /* darker grey → sharper */
   }
 
   .article-content p {
-    margin-bottom: 1.2em; /* clearer paragraph break */
+    margin-bottom: 1.3em; /* clearer paragraph break */
   }
 
   #articleTitle {
@@ -371,7 +369,6 @@ nav a.active {
     letter-spacing: 0.2px;
   }
 }
-
 
 /* ===== Brand photo box ===== */
 .brand {
