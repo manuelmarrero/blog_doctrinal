@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artículo | Maestro Manuel Marrero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="page"> <!-- NUEVO contenedor para layout completo -->
+
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">
+          <div class="brand-photo">
+            <img src="./images/autor.jpg" alt="Foto de Manuel Marrero" />
+          </div>
+          <div class="brand-info">
+            <h1>Maestro Manuel Marrero</h1>
+          </div>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="menu-icon"></span>
+        </button>
+
+        <nav class="site-nav">
+          <a href="./index.html">Inicio</a>
+          <a href="./enseñanzas.html">Enseñanzas</a>
+          <a href="./libros.html">Libros</a>
+          <a href="./sobre_mi.html">Sobre mí</a>
+          <a href="./contacto.html">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container article">
+      <a class="back-link" href="./enseñanzas.html">← Volver a Enseñanzas</a>
+      <h2 id="articleTitle"></h2>
+      <p class="muted"><span id="articleDate"></span> · Etiquetas: <span id="articleTags"></span></p>
+      <article id="articleContent" class="article-content"></article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <p id="footerText">© 2025 Maestro Manuel Marrero.</p>
+        <div class="social">
+          <a id="socialFacebook" href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a>
+          <a id="socialInstagram" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+          <a id="socialTikTok" href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+          <a id="socialTwitter" href="https://twitter.com/" target="_blank" rel="noopener">X/Twitter</a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- cierre de .page -->
+
+  <script type="module" src="./js/app.js"></script>
+  <script>
+    (function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        const withinHeader = e.target.closest('.site-header');
+        if (!withinHeader && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900 && nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
