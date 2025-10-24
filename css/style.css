@@ -348,7 +348,7 @@ nav a.active {
   .about-header { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid { grid-template-columns: 1fr; justify-items: center;}
 }
 
 
