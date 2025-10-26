@@ -343,14 +343,16 @@ nav a.active {
    📱 Responsive
    ========================= */
 @media (max-width: 900px) {
-  .cards-grid { grid-template-columns: 1fr 1fr; justify-items: center;}
+  .cards-grid { grid-template-columns: 1fr 1fr; justify-items: center; padding-left: 5px; padding-right: 5px;}
   .footer-content { flex-direction: column; gap: 10px; } 
   .about-header { grid-template-columns: 1fr; }
+  .brand {padding-left: 10px;}
 }
 @media (max-width: 600px) {
   .cards-grid { grid-template-columns: 1fr; justify-items: center;}
   .footer-content { flex-direction: column; gap: 15px; }
   .about-header { grid-template-columns: 1fr; }
+  .brand {padding-left: 10px;}
 
   .article {
     padding-left: 20px;   /* breathe from left edge */
@@ -452,6 +454,7 @@ nav a.active {
   }
   .menu-toggle {
     display: inline-block;
+    
   }
   /* La nav se colapsa y se oculta por defecto */
   .site-nav {
